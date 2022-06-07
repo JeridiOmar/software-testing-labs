@@ -79,7 +79,6 @@ result:
 <img src="./readme_assets/e2e1.PNG">
 
 
-**Note that you would probably encounter some error logs before seeing the result of tests, It is okay because it does not have an influence on the tests process. These are internal errors of Jest, not related to the actual tests.**
 ## Run Locally
 
 1- Make sure you have docker and docker-compose installed in your system by running these commands:
