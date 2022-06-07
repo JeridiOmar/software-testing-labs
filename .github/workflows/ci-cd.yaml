@@ -37,7 +37,8 @@ jobs:
 
       - run: |
           docker build . -t sahti.azurecr.io/shati:${{ github.sha }}
-          docker push sahti.azurecr.io/sahti:${{ github.sha }}
+          docker image ls
+          docker push sahti.azurecr.io/shati:${{ github.sha }}
 
       - uses: azure/webapps-deploy@v2
         with:
