@@ -10,16 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-          uses: actions/checkout@v3
-          - uses: actions/setup-node@v3
-            with:
-              node-version: '14'
-              cache: 'npm'
-          - run: npm install
-          - run: npm test
-          - name: List files in the repository
-            run: |
-              ls ${{ github.workspace }}
+        uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: '14'
+            cache: 'npm'
+        - run: npm install
+        - run: npm test
+        - name: List files in the repository
+          run: |
+            ls ${{ github.workspace }}
   Package and Deploy:
     runs-on: ubuntu-latest
     needs:
