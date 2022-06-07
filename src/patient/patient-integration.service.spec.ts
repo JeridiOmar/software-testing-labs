@@ -7,13 +7,14 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { CreatePatientDto } from './dto/create-patient.dto';
 import { RoleEnum } from './entities/role.enum';
 import { CivilStatusEnum } from './entities/civil-status.enum';
-import { Repository } from 'typeorm';
+import { Connection, Repository } from 'typeorm';
 import { AppModule } from '../app.module';
 import { UpdatePatientDto } from './dto/update-patient.dto';
 
 describe('PatientService integration test suite ', () => {
   let service: PatientService;
   let patientRepository: Repository<Patient>;
+  let module: TestingModule;
   const patients: Patient[] = [
     {
       id: 1,
@@ -92,14 +93,18 @@ describe('PatientService integration test suite ', () => {
   ];
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    module = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
 
     service = module.get<PatientService>(PatientService);
     patientRepository = module.get('PatientRepository');
   });
-  // afterAll(() => setTimeout(() => process.exit(), 1000))
+  afterAll((done) => {
+    // Closing the DB connection allows Jest to exit successfully.
+    module.get(Connection).close();
+    done();
+  });
 
   it('should be defined', () => {
     expect(service).toBeDefined();
