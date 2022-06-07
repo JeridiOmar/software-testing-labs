@@ -6,8 +6,6 @@ import { CivilStatusEnum } from './entities/civil-status.enum';
 import { Connection, Repository } from 'typeorm';
 import { AppModule } from '../app.module';
 import { UpdatePatientDto } from './dto/update-patient.dto';
-import redis from './redis'
-afterAll(() => redis.closeInstance())
 describe('PatientService integration test suite ', () => {
   let service: PatientService;
   let patientRepository: Repository<Patient>;
@@ -97,12 +95,6 @@ describe('PatientService integration test suite ', () => {
     service = module.get<PatientService>(PatientService);
     patientRepository = module.get('PatientRepository');
   });
-  afterAll(async () => {
-    // Closing the DB connection allows Jest to exit successfully.
-    module.get(Connection).close();
-    await module.close();
-  });
-
   it('should be defined', () => {
     expect(service).toBeDefined();
     expect(patientRepository).toBeDefined();
