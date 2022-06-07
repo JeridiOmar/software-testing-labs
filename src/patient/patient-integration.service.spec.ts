@@ -99,6 +99,7 @@ describe('PatientService integration test suite ', () => {
     service = module.get<PatientService>(PatientService);
     patientRepository = module.get('PatientRepository');
   });
+  // afterAll(() => setTimeout(() => process.exit(), 1000))
 
   it('should be defined', () => {
     expect(service).toBeDefined();
