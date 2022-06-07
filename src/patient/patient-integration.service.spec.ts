@@ -1,16 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PatientService } from './patient.service';
 import { Patient } from './entities/patient.entity';
-import * as bcrypt from 'bcrypt';
-import { classToPlain } from 'class-transformer';
-import { getRepositoryToken } from '@nestjs/typeorm';
-import { CreatePatientDto } from './dto/create-patient.dto';
 import { RoleEnum } from './entities/role.enum';
 import { CivilStatusEnum } from './entities/civil-status.enum';
 import { Connection, Repository } from 'typeorm';
 import { AppModule } from '../app.module';
 import { UpdatePatientDto } from './dto/update-patient.dto';
-
+import redis from './redis'
+afterAll(() => redis.closeInstance())
 describe('PatientService integration test suite ', () => {
   let service: PatientService;
   let patientRepository: Repository<Patient>;
