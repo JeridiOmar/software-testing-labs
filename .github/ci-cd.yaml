@@ -1,0 +1,57 @@
+name: Sahti Backend CI/CD
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Run NPM CI
+        run: npm ci
+      - name: Run NPM Linter
+        run: npm run lint
+      - name: Build The Project With NPM
+        run: npm run build --if-present
+       - name: Run Unit and Integration Tests
+         run: npm test
+  Package and Deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - Test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: create env file
+          run: |
+            ls
+            echo "${{ secrets.ENV_FILE }}" >> ./.env
+  - uses: azure/docker-login@v1
+      with:
+        login-server: mycontainer.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - run: |
+          docker build . -t sahti.azurecr.io/shati:${{ github.sha }}
+          docker push sahti.azurecr.io/shati:${{ github.sha }}
+
+      - uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'shati'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          images: 'sahti.azurecr.io/shati:${{ github.sha }}'
