@@ -57,7 +57,7 @@ npm run test
 ```
 
 result:
-<img src="./readme_assets/unit-int.png">
+<img src="./readme_assets/unit-int.PNG">
 
 ## E2E Tests
 
@@ -75,8 +75,8 @@ npm run test:e2e
 ```
 
 result:
-<img src="./readme_assets/e2e2.png">
-<img src="./readme_assets/e2e1.png">
+<img src="./readme_assets/e2e2.PNG">
+<img src="./readme_assets/e2e1.PNG">
 
 
 **Note that you would probably encounter some error logs before seeing the result of tests, It is okay because it does not have an influence on the tests process. These are internal errors of Jest, not related to the actual tests.**
