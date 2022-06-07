@@ -7,8 +7,10 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { CreatePatientDto } from './dto/create-patient.dto';
 import { RoleEnum } from './entities/role.enum';
 import { CivilStatusEnum } from './entities/civil-status.enum';
+import { Connection } from 'typeorm';
 
 describe('PatientService unit test suite', () => {
+  let module: TestingModule;
   let service: PatientService;
   const patient = new Patient();
   const patients: Patient[] = [
@@ -109,7 +111,7 @@ describe('PatientService unit test suite', () => {
     }),
   };
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    module = await Test.createTestingModule({
       providers: [
         PatientService,
         {
@@ -121,7 +123,11 @@ describe('PatientService unit test suite', () => {
 
     service = module.get<PatientService>(PatientService);
   });
-
+  afterAll(async (done) => {
+    // Closing the DB connection allows Jest to exit successfully.
+    await module.close();
+    done();
+  });
   it('should be defined', () => {
     expect(service).toBeDefined();
   });

@@ -100,9 +100,10 @@ describe('PatientService integration test suite ', () => {
     service = module.get<PatientService>(PatientService);
     patientRepository = module.get('PatientRepository');
   });
-  afterAll((done) => {
+  afterAll(async (done) => {
     // Closing the DB connection allows Jest to exit successfully.
     module.get(Connection).close();
+    await module.close();
     done();
   });
 
