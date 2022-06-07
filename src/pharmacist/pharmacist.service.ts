@@ -5,7 +5,7 @@ import { CreatePharmacistDto } from './dto/create-pharmacist.dto';
 
 import { PatientService } from '../patient/patient.service';
 import { Pharmacist } from './entities/pharmacist.entity';
-import { generateNotFoundErrorMessage } from 'src/utils/error-message-generator';
+import { generateNotFoundErrorMessage } from '../utils/error-message-generator';
 @Injectable()
 export class PharmacistService {
   constructor(

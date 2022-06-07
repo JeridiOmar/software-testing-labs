@@ -5,7 +5,7 @@ import { Doctor } from './entities/doctor.entity';
 import { PatientService } from '../patient/patient.service';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { generateNotFoundErrorMessage } from 'src/utils/error-message-generator';
+import { generateNotFoundErrorMessage } from '../utils/error-message-generator';
 
 @Injectable()
 export class DoctorService {

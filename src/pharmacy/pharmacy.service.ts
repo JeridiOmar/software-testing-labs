@@ -4,7 +4,7 @@ import { Repository, UpdateResult } from 'typeorm';
 import { CreatePharmacyDto } from './dto/create-pharmacy.dto';
 import { UpdatePharmacyDto } from './dto/update-pharmacy.dto';
 import { Pharmacy } from './entities/pharmacy.entity';
-import { generateNotFoundErrorMessage } from 'src/utils/error-message-generator';
+import { generateNotFoundErrorMessage } from '../utils/error-message-generator';
 
 @Injectable()
 export class PharmacyService {

@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { PharmacyModule } from 'src/pharmacy/pharmacy.module';
+import { PharmacyModule } from '../../pharmacy/pharmacy.module';
 import { FakerPharmacyService } from './faker-pharmacy.service';
 
 @Module({

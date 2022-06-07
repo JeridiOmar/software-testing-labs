@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Pharmacy } from 'src/pharmacy/entities/pharmacy.entity';
-import { PharmacyService } from 'src/pharmacy/pharmacy.service';
+import { Pharmacy } from '../../pharmacy/entities/pharmacy.entity';
+import { PharmacyService } from '../../pharmacy/pharmacy.service';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const faker = require('faker');
 // eslint-disable-next-line @typescript-eslint/no-var-requires

@@ -1,4 +1,4 @@
-import { Pharmacy } from 'src/pharmacy/entities/pharmacy.entity';
+import { Pharmacy } from '../../pharmacy/entities/pharmacy.entity';
 import { ChildEntity, Entity, ManyToOne } from 'typeorm';
 import { Patient } from '../../patient/entities/patient.entity';
 

@@ -1,5 +1,5 @@
-import { TimestampEntites } from 'src/generics/timestamp.entity';
-import { Pharmacist } from 'src/pharmacist/entities/pharmacist.entity';
+import { TimestampEntites } from '../../generics/timestamp.entity';
+import { Pharmacist } from '../../pharmacist/entities/pharmacist.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

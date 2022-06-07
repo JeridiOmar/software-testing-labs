@@ -6,7 +6,7 @@ import { Auth } from './shared/decorators/auth.decorator';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
-  @Auth(RoleEnum.PHARMACIST, RoleEnum.TECHNICIAN)
+  @Auth(RoleEnum.PHARMACIST, RoleEnum.PATIENT)
   @Get()
   getHello(): string {
     return this.appService.getHello();
