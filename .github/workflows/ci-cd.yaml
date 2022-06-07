@@ -23,9 +23,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: create env file
-          run: |
-            ls
-            echo "${{ secrets.ENV_FILE }}" >> ./.env
+        run: echo "${{ secrets.ENV_FILE }}" >> ./.env
+
+
 
 
       - uses: azure/docker-login@v1
