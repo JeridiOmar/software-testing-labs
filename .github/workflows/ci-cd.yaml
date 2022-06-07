@@ -11,7 +11,7 @@ jobs:
           node-version: '14'
           cache: 'npm'
       - run: npm install
-      - run: npm install -g dotenv
+      - run: npm install -g @dotenv/cli
       - run: npm test
       - name: List files in the repository
         run: |
