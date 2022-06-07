@@ -123,10 +123,9 @@ describe('PatientService unit test suite', () => {
 
     service = module.get<PatientService>(PatientService);
   });
-  afterAll(async (done) => {
+  afterAll(async () => {
     // Closing the DB connection allows Jest to exit successfully.
     await module.close();
-    done();
   });
   it('should be defined', () => {
     expect(service).toBeDefined();
